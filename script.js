@@ -220,11 +220,12 @@ function loadLeagueScreen() {
     const tableContainer = document.getElementById('league-table-body');
     const badgesContainer = document.getElementById('player-badges');
     
-    if (!currentUser.leagueCode || !leagueData) {
+    if (!leagueData) {
+        // Show loading state while league data is being fetched
         infoContainer.innerHTML = `
-            <div class="empty-state">
-                <p>You're not in a league yet!</p>
-                <p>Create a new league or join an existing one to compete with friends.</p>
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Loading Kerry & Libby's League...</p>
             </div>
         `;
         tableContainer.innerHTML = '';
@@ -236,7 +237,7 @@ function loadLeagueScreen() {
     infoContainer.innerHTML = `
         <div class="league-code-display">
             <div class="league-code">${leagueData.leagueCode}</div>
-            <div>Share this code with friends to join!</div>
+            <div>Kerry & Libby's Private League</div>
         </div>
         <p><strong>${leagueData.leagueName}</strong></p>
         <p>${leagueData.participants.length} participants</p>
@@ -443,10 +444,7 @@ function savePredictions() {
 }
 
 // League Functions - Single league support only
-function showLeagueModal() {
-    // No modal needed for single league
-    showToast('You are already in Kerry & Libby\'s League!');
-}
+// Users are automatically part of Kerry & Libby's League
 
 // Utility Functions
 function getCurrentGameweek() {

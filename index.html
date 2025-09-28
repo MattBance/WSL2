@@ -117,12 +117,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <div style="text-align: center; margin-top: 20px;">
-                    <button class="btn btn-secondary" onclick="showLeagueModal()">
-                        Create/Join League
-                    </button>
-                </div>
             </div>
 
             <!-- My Scores Screen -->
@@ -180,35 +174,6 @@
             </div>
             <div style="text-align: center;">
                 <button class="btn" onclick="setUsername()">Get Started</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="league-modal" class="modal">
-        <div class="modal-content">
-            <h3>League Management</h3>
-            <div id="league-options">
-                <div class="form-group">
-                    <label for="join-league-input">Join existing league:</label>
-                    <input type="text" id="join-league-input" placeholder="Enter 6-character league code" maxlength="6">
-                </div>
-                <div style="text-align: center; margin: 16px 0;">
-                    <button class="btn" onclick="joinLeague()">Join League</button>
-                </div>
-                
-                <hr style="margin: 20px 0;">
-                
-                <div class="form-group">
-                    <label for="create-league-input">Create new league:</label>
-                    <input type="text" id="create-league-input" placeholder="Enter league name" maxlength="30">
-                </div>
-                <div style="text-align: center; margin: 16px 0;">
-                    <button class="btn" onclick="createLeague()">Create League</button>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 20px;">
-                <button class="btn btn-secondary" onclick="closeModal('league-modal')">Cancel</button>
             </div>
         </div>
     </div>
