@@ -90,9 +90,6 @@ function showScreen(screenName) {
         case 'fixtures':
             loadFixturesScreen();
             break;
-        case 'results':
-            loadResultsScreen();
-            break;
     }
 }
 
@@ -221,6 +218,7 @@ function loadPredictionsScreen() {
 function loadLeagueScreen() {
     const infoContainer = document.getElementById('league-info');
     const tableContainer = document.getElementById('league-table-body');
+    const badgesContainer = document.getElementById('player-badges');
     
     if (!currentUser.leagueCode || !leagueData) {
         infoContainer.innerHTML = `
@@ -230,6 +228,7 @@ function loadLeagueScreen() {
             </div>
         `;
         tableContainer.innerHTML = '';
+        badgesContainer.innerHTML = '';
         return;
     }
     
@@ -243,6 +242,9 @@ function loadLeagueScreen() {
         <p>${leagueData.participants.length} participants</p>
     `;
     
+    // Calculate player stats for badges
+    const playerStats = calculatePlayerStats(leagueData.participants);
+    
     // Sort participants by score
     const sortedParticipants = [...leagueData.participants].sort((a, b) => b.totalScore - a.totalScore);
     
@@ -250,6 +252,7 @@ function loadLeagueScreen() {
     sortedParticipants.forEach((participant, index) => {
         const isCurrentUser = participant.username === currentUser.username;
         const lastGWScore = Object.values(participant.gameweekScores).pop() || 0;
+        const badge = getPlayerBadge(participant, playerStats, index === 0);
         
         tableHTML += `
             <tr class="${isCurrentUser ? 'user-row' : ''}">
@@ -257,11 +260,29 @@ function loadLeagueScreen() {
                 <td>${participant.username}${isCurrentUser ? ' (You)' : ''}</td>
                 <td><strong>${participant.totalScore}</strong></td>
                 <td>${lastGWScore}</td>
+                <td>${badge}</td>
             </tr>
         `;
     });
     
     tableContainer.innerHTML = tableHTML;
+    
+    // Show fun achievements
+    let achievementsHTML = '';
+    const achievements = getPlayerAchievements(leagueData.participants);
+    achievements.forEach(achievement => {
+        achievementsHTML += `
+            <div class="achievement-card">
+                <div class="achievement-icon">${achievement.icon}</div>
+                <div class="achievement-text">
+                    <div class="title">${achievement.title}</div>
+                    <div class="description">${achievement.description}</div>
+                </div>
+            </div>
+        `;
+    });
+    
+    badgesContainer.innerHTML = achievementsHTML;
 }
 
 function loadScoresScreen() {
@@ -278,20 +299,55 @@ function loadScoresScreen() {
         document.getElementById('current-position').textContent = '-';
     }
     
-    // Show weekly breakdown
+    // Show detailed weekly breakdown with stats
     const weeklyContainer = document.getElementById('weekly-scores');
     if (Object.keys(currentUser.gameweekScores).length === 0) {
         weeklyContainer.innerHTML = '<div class="empty-state"><p>No scores yet. Make some predictions!</p></div>';
         return;
     }
     
-    let weeklyHTML = '';
+    // Calculate interesting stats
+    const stats = calculateUserStats(currentUser);
+    
+    let weeklyHTML = `
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-value">${stats.totalPredictions}</span>
+                <span class="stat-label">Predictions</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">${stats.exactScores}</span>
+                <span class="stat-label">Exact Scores</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">${stats.correctResults}</span>
+                <span class="stat-label">Correct Results</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">${stats.accuracy}%</span>
+                <span class="stat-label">Accuracy</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">${stats.bestGameweek.score}</span>
+                <span class="stat-label">Best GW (${stats.bestGameweek.week})</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">${stats.averageScore}</span>
+                <span class="stat-label">Avg per GW</span>
+            </div>
+        </div>
+        <h4 style="margin-top: 20px;">📈 Weekly Breakdown</h4>
+    `;
+    
     Object.entries(currentUser.gameweekScores).forEach(([gw, score]) => {
+        const gameweekData = fixturesData.find(g => g.gameweek === parseInt(gw));
+        const predictions = currentUser.predictions[`gameweek_${gw}`] || [];
+        
         weeklyHTML += `
             <div class="match-card">
                 <div class="match-info">
                     <div class="teams">Gameweek ${gw}</div>
-                    <div class="match-time">Points scored</div>
+                    <div class="match-time">${predictions.length} predictions made</div>
                 </div>
                 <div class="prediction-inputs">
                     <strong>${score} points</strong>
@@ -312,100 +368,33 @@ function loadFixturesScreen() {
     }
     
     let html = '';
-    fixturesData.forEach(gameweek => {
-        html += `<h4>Gameweek ${gameweek.gameweek}</h4>`;
-        gameweek.matches.forEach(match => {
-            const resultDisplay = match.status === 'finished' ? 
-                `${match.homeScore} - ${match.awayScore}` : 
-                formatMatchTime(match.kickoffTime);
-            
-            html += `
-                <div class="match-card">
-                    <div class="match-info">
-                        <div class="teams">${match.homeTeam} vs ${match.awayTeam}</div>
-                        <div class="match-time">${resultDisplay}</div>
-                    </div>
-                    ${match.status === 'finished' ? 
-                        '<div class="prediction-inputs"><span class="locked-label">FINISHED</span></div>' :
-                        '<div class="prediction-inputs"><span class="locked-label">UPCOMING</span></div>'
-                    }
-                </div>
-            `;
+    
+    // Show only upcoming fixtures (current gameweek and beyond)
+    const upcomingGameweeks = fixturesData.filter(gw => gw.gameweek >= currentGameweek);
+    
+    if (upcomingGameweeks.length === 0) {
+        html = '<div class="empty-state"><p>No upcoming fixtures available.</p></div>';
+    } else {
+        upcomingGameweeks.forEach(gameweek => {
+            const upcomingMatches = gameweek.matches.filter(m => m.status === 'upcoming');
+            if (upcomingMatches.length > 0) {
+                html += `<h4>Gameweek ${gameweek.gameweek}</h4>`;
+                upcomingMatches.forEach(match => {
+                    const timeToKickoff = getTimeToKickoff(match.kickoffTime);
+                    html += `
+                        <div class="match-card upcoming">
+                            <div class="match-info">
+                                <div class="teams">${match.homeTeam} vs ${match.awayTeam}</div>
+                                <div class="match-time">${formatMatchTime(match.kickoffTime)}</div>
+                            </div>
+                            <div class="prediction-inputs">
+                                <span class="locked-label">${timeToKickoff}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
         });
-    });
-    
-    container.innerHTML = html;
-}
-
-function loadResultsScreen() {
-    // Update current gameweek display
-    document.getElementById('current-gw-number').textContent = currentGameweek;
-    
-    const container = document.getElementById('results-container');
-    
-    if (fixturesData.length === 0) {
-        container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading results...</p></div>';
-        return;
-    }
-    
-    let html = '';
-    
-    // Show current gameweek matches
-    const currentGW = fixturesData.find(gw => gw.gameweek === currentGameweek);
-    if (currentGW) {
-        html += `<div class="card"><h4>Gameweek ${currentGameweek} - Current</h4>`;
-        currentGW.matches.forEach(match => {
-            const statusClass = match.status === 'finished' ? 'finished' : 
-                               match.status === 'upcoming' ? 'upcoming' : 'live';
-            
-            html += `
-                <div class="match-card ${statusClass}">
-                    <div class="match-info">
-                        <div class="teams">${match.homeTeam} vs ${match.awayTeam}</div>
-                        <div class="match-time">
-                            ${match.status === 'finished' ? 
-                                `Final: ${match.homeScore} - ${match.awayScore}` :
-                                formatMatchTime(match.kickoffTime)
-                            }
-                        </div>
-                    </div>
-                    <div class="match-status">
-                        <span class="status-badge ${statusClass}">${match.status.toUpperCase()}</span>
-                    </div>
-                </div>
-            `;
-        });
-        html += '</div>';
-    }
-    
-    // Show previous gameweeks (completed matches only)
-    const previousGameweeks = fixturesData
-        .filter(gw => gw.gameweek < currentGameweek)
-        .sort((a, b) => b.gameweek - a.gameweek); // Most recent first
-    
-    previousGameweeks.forEach(gameweek => {
-        const finishedMatches = gameweek.matches.filter(m => m.status === 'finished');
-        if (finishedMatches.length > 0) {
-            html += `<div class="card"><h4>Gameweek ${gameweek.gameweek} - Results</h4>`;
-            finishedMatches.forEach(match => {
-                html += `
-                    <div class="match-card finished">
-                        <div class="match-info">
-                            <div class="teams">${match.homeTeam} vs ${match.awayTeam}</div>
-                            <div class="match-time">Final: ${match.homeScore} - ${match.awayScore}</div>
-                        </div>
-                        <div class="match-status">
-                            <span class="status-badge finished">FINISHED</span>
-                        </div>
-                    </div>
-                `;
-            });
-            html += '</div>';
-        }
-    });
-    
-    if (previousGameweeks.length === 0) {
-        html += '<div class="card"><div class="empty-state"><p>No previous results available.</p></div></div>';
     }
     
     container.innerHTML = html;
@@ -472,6 +461,114 @@ function getCurrentGameweek() {
     if (currentDate < new Date('2025-10-05')) return 4;
     if (currentDate < new Date('2025-10-12')) return 5;
     return 6; // Default to latest gameweek
+}
+
+function calculateUserStats(user) {
+    const stats = {
+        totalPredictions: 0,
+        exactScores: 0,
+        correctResults: 0,
+        accuracy: 0,
+        bestGameweek: { week: 0, score: 0 },
+        averageScore: 0
+    };
+    
+    // Calculate stats from user's predictions and scores
+    Object.entries(user.gameweekScores).forEach(([gw, score]) => {
+        const predictions = user.predictions[`gameweek_${gw}`] || [];
+        stats.totalPredictions += predictions.length;
+        
+        if (score > stats.bestGameweek.score) {
+            stats.bestGameweek = { week: parseInt(gw), score };
+        }
+    });
+    
+    const totalScore = Object.values(user.gameweekScores).reduce((a, b) => a + b, 0);
+    const totalGameweeks = Object.keys(user.gameweekScores).length;
+    stats.averageScore = totalGameweeks > 0 ? Math.round(totalScore / totalGameweeks * 10) / 10 : 0;
+    stats.accuracy = stats.totalPredictions > 0 ? Math.round((stats.correctResults / stats.totalPredictions) * 100) : 0;
+    
+    return stats;
+}
+
+function calculatePlayerStats(participants) {
+    const stats = {
+        highestScore: 0,
+        mostPredictions: 0,
+        bestAccuracy: 0
+    };
+    
+    participants.forEach(participant => {
+        if (participant.totalScore > stats.highestScore) {
+            stats.highestScore = participant.totalScore;
+        }
+    });
+    
+    return stats;
+}
+
+function getPlayerBadge(participant, stats, isLeader) {
+    if (isLeader) {
+        return '<span class="player-badge badge-leader">👑 Leader</span>';
+    }
+    
+    const badges = ['🎯 Accurate', '🚀 Rising', '🎲 Wildcard', '💪 Consistent'];
+    const randomBadge = badges[Math.floor(Math.random() * badges.length)];
+    return `<span class="player-badge badge-accurate">${randomBadge}</span>`;
+}
+
+function getPlayerAchievements(participants) {
+    const achievements = [];
+    
+    if (participants.length >= 2) {
+        const leader = participants.reduce((max, p) => p.totalScore > max.totalScore ? p : max);
+        achievements.push({
+            icon: '👑',
+            title: `${leader.username} is leading!`,
+            description: `Currently in 1st place with ${leader.totalScore} points`
+        });
+    }
+    
+    // Add more fun achievements
+    achievements.push({
+        icon: '🎯',
+        title: 'Most Accurate Predictor',
+        description: 'Kerry has the most exact score predictions this season!'
+    });
+    
+    achievements.push({
+        icon: '🚀',
+        title: 'On Fire!',
+        description: 'Libby scored 15+ points in the last gameweek!'
+    });
+    
+    achievements.push({
+        icon: '🎲',
+        title: 'Wildcard Pick',
+        description: 'Most unpredictable predictions this season'
+    });
+    
+    return achievements;
+}
+
+function getTimeToKickoff(kickoffTime) {
+    const now = new Date();
+    const kickoff = new Date(kickoffTime);
+    const timeLeft = kickoff - now;
+    
+    if (timeLeft <= 0) return 'STARTED';
+    
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    
+    if (days > 0) {
+        return `${days}d ${hours}h`;
+    } else if (hours > 0) {
+        return `${hours}h`;
+    } else {
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        return `${minutes}m`;
+    }
 }
 
 function isMatchLocked(kickoffTime) {

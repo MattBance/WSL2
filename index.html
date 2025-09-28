@@ -25,7 +25,6 @@
                     <button class="nav-btn" onclick="showScreen('league')">League</button>
                     <button class="nav-btn" onclick="showScreen('scores')">My Scores</button>
                     <button class="nav-btn" onclick="showScreen('fixtures')">Fixtures</button>
-                    <button class="nav-btn" onclick="showScreen('results')">Results</button>
                 </div>
             </div>
         </nav>
@@ -68,6 +67,25 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Point System Explanation -->
+                <div class="card">
+                    <h4>📊 Point System</h4>
+                    <div class="point-system">
+                        <div class="point-item">
+                            <span class="points">+3</span>
+                            <span class="description">Exact score prediction</span>
+                        </div>
+                        <div class="point-item">
+                            <span class="points">+1</span>
+                            <span class="description">Correct result (Win/Draw/Loss)</span>
+                        </div>
+                        <div class="point-item">
+                            <span class="points">+0</span>
+                            <span class="description">Wrong prediction</span>
+                        </div>
+                    </div>
+                </div>
                 
                 <div id="league-table-container">
                     <div class="card">
@@ -79,11 +97,23 @@
                                         <th>Player</th>
                                         <th>Points</th>
                                         <th>GW</th>
+                                        <th>Badge</th>
                                     </tr>
                                 </thead>
                                 <tbody id="league-table-body">
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fun Stats -->
+                <div class="card">
+                    <h4>🎖️ Player Achievements</h4>
+                    <div id="player-badges">
+                        <div class="loading">
+                            <div class="spinner"></div>
+                            <p>Loading achievements...</p>
                         </div>
                     </div>
                 </div>
@@ -128,29 +158,12 @@
             <!-- Fixtures Screen -->
             <div id="fixtures-screen" class="screen">
                 <div class="card">
-                    <h3>📅 Fixtures & Results</h3>
+                    <h3>📅 Upcoming Fixtures</h3>
                     <div id="fixtures-container">
                         <div class="loading">
                             <div class="spinner"></div>
                             <p>Loading fixtures...</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Results Screen -->
-            <div id="results-screen" class="screen">
-                <div class="card">
-                    <h3>📋 Current Results</h3>
-                    <div id="current-gameweek-display">
-                        <p><strong>Current Gameweek: <span id="current-gw-number">4</span></strong></p>
-                    </div>
-                </div>
-                
-                <div id="results-container">
-                    <div class="loading">
-                        <div class="spinner"></div>
-                        <p>Loading results...</p>
                     </div>
                 </div>
             </div>
