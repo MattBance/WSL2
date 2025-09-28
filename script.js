@@ -221,20 +221,20 @@ function loadPredictionsScreen() {
                 <div class="match-info">
                     <div class="teams">${sanitizeHtml(match.homeTeam)} vs ${sanitizeHtml(match.awayTeam)}</div>
                     <div class="match-time">
-                        ${formatMatchTime(match.kickoffTime)}
-                        ${isLocked ? '<span class="deadline-warning">LOCKED</span>' : getTimeToDeadline(match.kickoffTime)}
+                        ${sanitizeHtml(formatMatchTime(match.kickoffTime))}
+                        ${isLocked ? '<span class="deadline-warning">LOCKED</span>' : sanitizeHtml(getTimeToDeadline(match.kickoffTime))}
                     </div>
                 </div>
                 <div class="prediction-inputs">
                     ${isLocked ? 
                         '<span class="locked-label">LOCKED</span>' : 
-                        `<input type="number" class="score-input" id="home-${match.id}" 
-                            min="0" max="9" value="${prediction?.homeScore || ''}" 
-                            onchange="updatePrediction('${match.id}')">
+                        `<input type="number" class="score-input" id="home-${sanitizeHtml(match.id)}" 
+                            min="0" max="9" value="${sanitizeHtml(String(prediction?.homeScore || ''))}" 
+                            onchange="updatePrediction('${sanitizeHtml(match.id)}')">
                         <span class="vs">-</span>
-                        <input type="number" class="score-input" id="away-${match.id}" 
-                            min="0" max="9" value="${prediction?.awayScore || ''}" 
-                            onchange="updatePrediction('${match.id}')">`
+                        <input type="number" class="score-input" id="away-${sanitizeHtml(match.id)}" 
+                            min="0" max="9" value="${sanitizeHtml(String(prediction?.awayScore || ''))}" 
+                            onchange="updatePrediction('${sanitizeHtml(match.id)}')">` 
                     }
                 </div>
             </div>
