@@ -243,7 +243,7 @@ function showToast(message, type = 'success') {
 
 // Data Loading Functions
 function loadFixturesData() {
-    fetch('../data/fixtures-results.json')
+    fetch('data/fixtures-results.json')
         .then(response => response.json())
         .then(data => {
             allFixturesData = data;
