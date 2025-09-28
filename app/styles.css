@@ -917,49 +917,6 @@ body {
     min-height: 20px;
 }
 
-/* Match Actions */
-.match-actions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 8px;
-}
-
-.save-prediction-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-}
-
-.save-prediction-btn:hover:not(:disabled) {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
-.save-prediction-btn:disabled {
-    background: #cbd5e0;
-    color: #a0aec0;
-    cursor: not-allowed;
-    box-shadow: none;
-}
-
-.saved-indicator {
-    color: #48bb78;
-    font-weight: 600;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
 /* Touch feedback */
 @media (hover: none) {
     .spinner-button:hover {

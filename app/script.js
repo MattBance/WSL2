@@ -304,7 +304,6 @@ function createScoreSpinner(matchId, team, isHome, currentScore = 0, isExpired =
 
 function adjustScore(matchId, team, isHome, delta) {
     if (isMatchExpired(matchId)) {
-        showToast('Cannot change prediction - deadline has passed!', 'error');
         return;
     }
     
@@ -325,10 +324,6 @@ function adjustScore(matchId, team, isHome, delta) {
         }, 150);
         
         savePrediction(matchId);
-        
-        if (navigator.vibrate) {
-            navigator.vibrate(50);
-        }
     }
 }
 
@@ -416,10 +411,10 @@ function isMatchExpired(matchId) {
     if (!match) return false;
     
     const matchDate = new Date(match.kickoffTime);
-    const oneHourBefore = new Date(matchDate.getTime() - (60 * 60 * 1000));
+    const tenMinutesBefore = new Date(matchDate.getTime() - (10 * 60 * 1000));
     const now = new Date();
     
-    return now > oneHourBefore;
+    return now > tenMinutesBefore;
 }
 
 function findMatchById(matchId) {
@@ -440,7 +435,7 @@ function getTimeUntilDeadline(matchId) {
     if (!match) return null;
     
     const matchDate = new Date(match.kickoffTime);
-    const deadline = new Date(matchDate.getTime() - (60 * 60 * 1000));
+    const deadline = new Date(matchDate.getTime() - (10 * 60 * 1000));
     const now = new Date();
     
     if (now > deadline) return null;
@@ -461,7 +456,6 @@ function savePrediction(matchId) {
     if (!match) return;
     
     if (isMatchExpired(matchId)) {
-        showToast('Cannot save prediction - deadline has passed!', 'error');
         return;
     }
     
@@ -487,29 +481,6 @@ function savePrediction(matchId) {
     };
     
     saveUserData();
-    
-    // Update the saved indicator
-    const matchBox = document.querySelector(`[data-match-id="${matchId}"] .match-actions`);
-    if (matchBox) {
-        const existingIndicator = matchBox.querySelector('.saved-indicator');
-        if (!existingIndicator) {
-            const indicator = document.createElement('div');
-            indicator.className = 'saved-indicator';
-            indicator.innerHTML = '✓ Saved';
-            matchBox.appendChild(indicator);
-        }
-    }
-    
-    // Animate the save button
-    const saveBtn = document.querySelector(`button[onclick="savePrediction('${matchId}')"]`);
-    if (saveBtn) {
-        saveBtn.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            saveBtn.style.transform = 'scale(1)';
-        }, 150);
-    }
-    
-    showToast(`💾 Prediction saved: ${match.homeTeam} ${homeScore} - ${awayScore} ${match.awayTeam}`, 'success');
 }
 
 // Screen Loading Functions  
@@ -558,15 +529,6 @@ function loadPredictionsScreen() {
                             <div class="team-name">${sanitizeHtml(match.awayTeam)}</div>
                             ${createScoreSpinner(match.id, match.awayTeam, false, awayScore, isExpired)}
                         </div>
-                    </div>
-                    
-                    <div class="match-actions">
-                        <button class="save-prediction-btn" 
-                                onclick="savePrediction('${sanitizeHtml(match.id)}')" 
-                                ${isExpired ? 'disabled' : ''}>
-                            💾 Save Prediction
-                        </button>
-                        ${existingPrediction ? '<div class="saved-indicator">✓ Saved</div>' : ''}
                     </div>
                 </div>
             </div>
