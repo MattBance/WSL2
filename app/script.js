@@ -133,8 +133,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 });
 
-function initializeApp() {
-    loadUserData();
+async function initializeApp() {
+    await loadUserData();
     if (!currentUser.username) {
         showModal('welcome-modal');
     } else {
@@ -145,18 +145,34 @@ function initializeApp() {
 }
 
 // User Management
-function loadUserData() {
+async function loadUserData() {
     const userData = localStorage.getItem('wsl2_user_data');
     if (userData) {
         currentUser = { ...currentUser, ...JSON.parse(userData) };
     }
+    
+    // If we have a username, try to load from Firebase
+    if (currentUser.username && window.FirebaseDB) {
+        const firebaseData = await FirebaseDB.loadUserData(currentUser.username);
+        if (firebaseData) {
+            currentUser = { ...currentUser, ...firebaseData };
+            // Update localStorage as backup
+            localStorage.setItem('wsl2_user_data', JSON.stringify(currentUser));
+        }
+    }
 }
 
-function saveUserData() {
+async function saveUserData() {
+    // Always save to localStorage as backup
     localStorage.setItem('wsl2_user_data', JSON.stringify(currentUser));
+    
+    // Save to Firebase if available and user is logged in
+    if (currentUser.username && window.FirebaseDB) {
+        await FirebaseDB.saveUserData(currentUser.username, currentUser);
+    }
 }
 
-function selectPlayer(playerName) {
+async function selectPlayer(playerName) {
     const validPlayers = ['Matt', 'Kerry', 'Libby'];
     if (!validPlayers.includes(playerName)) {
         showToast('Invalid player selection!', 'error');
@@ -165,8 +181,16 @@ function selectPlayer(playerName) {
     
     currentUser.username = playerName;
     
-    // Load their existing data from league if available
-    if (leagueData) {
+    // Try to load existing data from Firebase first
+    if (window.FirebaseDB) {
+        const firebaseData = await FirebaseDB.loadUserData(playerName);
+        if (firebaseData) {
+            currentUser = { ...currentUser, ...firebaseData };
+        }
+    }
+    
+    // If no Firebase data, load from hardcoded league data
+    if (!currentUser.totalScore && leagueData) {
         const playerData = leagueData.participants.find(p => p.username === playerName);
         if (playerData) {
             currentUser.totalScore = playerData.totalScore;
@@ -176,7 +200,7 @@ function selectPlayer(playerName) {
     }
     
     currentUser.leagueCode = 'GOAL24';
-    saveUserData();
+    await saveUserData();
     updateUserDisplay();
     closeModal('welcome-modal');
     loadFixturesData();
@@ -451,7 +475,7 @@ function getTimeUntilDeadline(matchId) {
     }
 }
 
-function savePrediction(matchId) {
+async function savePrediction(matchId) {
     const match = findMatchById(matchId);
     if (!match) return;
     
@@ -474,13 +498,21 @@ function savePrediction(matchId) {
         currentUser.predictions = {};
     }
     
-    currentUser.predictions[matchId] = {
+    const prediction = {
         homeScore: homeScore,
         awayScore: awayScore,
         timestamp: new Date().toISOString()
     };
     
-    saveUserData();
+    currentUser.predictions[matchId] = prediction;
+    
+    // Save to localStorage immediately
+    localStorage.setItem('wsl2_user_data', JSON.stringify(currentUser));
+    
+    // Save to Firebase if available
+    if (currentUser.username && window.FirebaseDB) {
+        await FirebaseDB.savePrediction(currentUser.username, matchId, prediction);
+    }
 }
 
 // Screen Loading Functions  
