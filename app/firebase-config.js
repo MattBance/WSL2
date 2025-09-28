@@ -1,12 +1,13 @@
 // Firebase Configuration
-// TODO: Replace with your actual Firebase config from Firebase Console
+// These credentials are SAFE to be public for client-side Firebase apps
+// Security is handled by Firestore rules, not by hiding these values
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY_HERE",
-  authDomain: "YOUR_PROJECT.firebaseapp.com", 
-  projectId: "YOUR_PROJECT_ID_HERE",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID_HERE",
-  appId: "YOUR_APP_ID_HERE"
+  apiKey: "AIzaSyCbyiH76iBAXG7d96zdjbFxlF4kGgg_amg",
+  authDomain: "wsl2-score-predictor.firebaseapp.com",
+  projectId: "wsl2-score-predictor",
+  storageBucket: "wsl2-score-predictor.firebasestorage.app",
+  messagingSenderId: "312346786955",
+  appId: "1:312346786955:web:641cd371e3ac935e34e88e"
 };
 
 // Initialize Firebase

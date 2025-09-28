@@ -32,15 +32,13 @@ const firebaseConfig = {
 ```
 
 ## Step 4: Update Your Code
-1. Copy `app/firebase-config.js` to `app/firebase-config-private.js`
-2. **Edit the private file** with your actual Firebase config:
-3. **Replace the placeholder config** in `firebase-config-private.js` with your real values
-4. The private file is gitignored and won't be committed to your public repo
+1. Open `app/firebase-config.js` in your project
+2. **Replace the placeholder config** with your actual Firebase config:
 
 ```javascript
-// In firebase-config-private.js - Replace with your actual config
+// Replace this section with your actual config from Firebase Console
 const firebaseConfig = {
-  apiKey: "your-real-api-key-here",           // ← Your real values here
+  apiKey: "your-real-api-key-here",           // ← Replace with your real values
   authDomain: "your-real-project.firebaseapp.com", 
   projectId: "your-real-project-id",
   storageBucket: "your-real-project.appspot.com",
@@ -49,7 +47,12 @@ const firebaseConfig = {
 };
 ```
 
-**Note:** Firebase client credentials are actually safe to be public, but this approach follows security best practices.
+## 🔒 Security Note
+**Firebase client-side credentials are SAFE to be public!** 
+- These are **identification keys**, not secret authentication keys
+- **Real security** comes from Firestore security rules in your Firebase console
+- **Google designed** these to be public for client-side apps
+- **Millions of apps** on GitHub have public Firebase configs
 
 ## Step 5: Deploy to GitHub Pages
 1. Commit and push your changes to GitHub

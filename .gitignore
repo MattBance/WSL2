@@ -9,10 +9,6 @@
 # Built Visual Studio Code Extensions
 *.vsix
 
-# Firebase private config
-.env
-firebase-config-private.js
-
 # Node modules (if using build tools)
 node_modules/
 
