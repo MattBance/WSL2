@@ -671,3 +671,42 @@ body {
     letter-spacing: 0.5px;
     margin-top: 4px;
 }
+
+/* Player Selection Styling */
+.player-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.player-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+    border: 2px solid #e1e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.player-btn:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.player-emoji {
+    font-size: 24px;
+}
+
+.player-name {
+    flex: 1;
+    text-align: left;
+}

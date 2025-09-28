@@ -168,12 +168,20 @@
     <div id="welcome-modal" class="modal">
         <div class="modal-content">
             <h3>Welcome to WSL2 Predictor!</h3>
-            <div class="form-group">
-                <label for="username-input">Choose your username:</label>
-                <input type="text" id="username-input" placeholder="Enter your username" maxlength="20">
-            </div>
-            <div style="text-align: center;">
-                <button class="btn" onclick="setUsername()">Get Started</button>
+            <p>Choose your player identity:</p>
+            <div class="player-selection">
+                <button class="player-btn" onclick="selectPlayer('Matt')">
+                    <span class="player-emoji">⚽</span>
+                    <span class="player-name">Matt</span>
+                </button>
+                <button class="player-btn" onclick="selectPlayer('Kerry')">
+                    <span class="player-emoji">🎯</span>
+                    <span class="player-name">Kerry</span>
+                </button>
+                <button class="player-btn" onclick="selectPlayer('Libby')">
+                    <span class="player-emoji">⭐</span>
+                    <span class="player-name">Libby</span>
+                </button>
             </div>
         </div>
     </div>

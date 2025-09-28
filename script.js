@@ -55,6 +55,36 @@ function setUsername() {
     }
 }
 
+function selectPlayer(playerName) {
+    // Validate player selection
+    const validPlayers = ['Matt', 'Kerry', 'Libby'];
+    if (!validPlayers.includes(playerName)) {
+        showToast('Invalid player selection!', 'error');
+        return;
+    }
+    
+    // Set the selected player as current user
+    currentUser.username = playerName;
+    
+    // Load their existing data from league if available
+    if (leagueData) {
+        const playerData = leagueData.participants.find(p => p.username === playerName);
+        if (playerData) {
+            currentUser.totalScore = playerData.totalScore;
+            currentUser.gameweekScores = playerData.gameweekScores;
+            currentUser.predictions = playerData.predictions || {};
+        }
+    }
+    
+    currentUser.leagueCode = 'GOAL24';
+    saveUserData();
+    updateUserDisplay();
+    closeModal('welcome-modal');
+    loadFixturesData();
+    loadLeagueData();
+    showToast(`Welcome back, ${playerName}! 🎯`, 'success');
+}
+
 function updateUserDisplay() {
     document.getElementById('username-display').textContent = currentUser.username;
     document.getElementById('user-total-score').textContent = currentUser.totalScore + ' pts';
