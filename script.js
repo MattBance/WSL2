@@ -167,6 +167,10 @@ function loadLeagueData() {
 
 // Screen Loading Functions
 function loadPredictionsScreen() {
+    // Update the current gameweek display
+    document.getElementById('current-gameweek-info').innerHTML = 
+        `<p><strong>Gameweek ${currentGameweek}</strong> - Make your predictions before the deadline!</p>`;
+    
     const container = document.getElementById('predictions-container');
     
     if (fixturesData.length === 0) {
