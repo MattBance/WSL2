@@ -1,20 +1,40 @@
 Score Predictor - WSL2 Football League
 =====================================
 
-A single file vanilla HTML, JS, CSS, mobile-friendly webapp that allows users to predict their scores for the WSL2 football league in England.
+A secure, mobile-friendly web application that allows three hardcoded players (Matt, Kerry, and Libby) to predict scores for the WSL2 football league in England. Features real data from Flashscore with automated updates.
 
 ## Overview
-Each week the player will be able to input their predicted scores for each match in the league and the app will calculate their total score based on the accuracy of their predictions. Predictions must be made up to 1 hour before the match starts.
+The app tracks predictions for three players across the WSL2 season. Each player makes score predictions and earns points based on accuracy. The system includes comprehensive security measures and automated data scraping capabilities.
 
-The app will also display the current league table and the user's position in the league based on their total score.
+**Live Application**: https://mattbance.github.io/WSL2/
 
 ## Technology Stack
-- HTML5
-- CSS3
-- JavaScript (ES6)
-- Single file implementation
-- Mobile-friendly responsive design
-- Hosted on GitHub Pages
+- **Frontend**: Vanilla HTML5, CSS3, JavaScript (ES6)
+- **Backend**: Python scraper with BeautifulSoup
+- **Data Source**: Flashscore WSL2 fixtures and results
+- **Security**: XSS protection with HTML sanitization
+- **Hosting**: GitHub Pages
+- **Structure**: Modular app/ and scripts/ organization
+
+## Current Implementation
+
+### Player System
+- **Three Hardcoded Players**: Matt, Kerry, and Libby
+- **Starting Points**: All players begin with 35 points
+- **Prediction Data**: Realistic patterns for gameweeks 1-3
+- **Player Selection**: Modal interface for switching between players
+
+### Security Features
+- **XSS Protection**: sanitizeHtml() function prevents injection attacks
+- **Safe DOM**: All user data sanitized before display
+- **Input Validation**: Secure handling of all form inputs
+- **localStorage Safety**: Validated data storage and retrieval
+
+### Data Integration
+- **Real WSL2 Data**: 12 teams from 2025-26 season
+- **Flashscore Source**: Automated scraping for fixtures/results
+- **JSON Structure**: Organized by gameweeks with match details
+- **Python Automation**: scripts/scrape_wsl2_data.py for updates
 
 ## 1. Scoring System Details
 

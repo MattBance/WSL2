@@ -1,18 +1,30 @@
 # WSL2 Score Predictor - Data Files
 
-This directory contains the JSON fixture and league data files for the WSL2 Score Predictor application, sourced from real WSL2 (Women's Super League 2) data.
+This directory contains JSON data files for the WSL2 Score Predictor application, featuring real WSL2 data scraped from Flashscore with three hardcoded players.
 
 ## File Structure
 
 ```
 data/
-├── fixtures-results.json    # Main fixtures and results data
-├── teams.json              # Team information and metadata  
-├── leagues/                # League-specific data files
-│   ├── GOAL24.json        # Sample league: Friends Prediction League
-│   └── WSL123.json        # Sample league: WSL2 Enthusiasts
+├── fixtures-results.json    # Real WSL2 fixtures and results from Flashscore
+├── teams.json              # 12 WSL2 teams for 2025-26 season 
 └── README.md              # This file
 ```
+
+## Current Implementation
+
+### Three-Player System
+The app features exactly three hardcoded players:
+- **Matt**: Strategic predictor with consistent performance
+- **Kerry**: Variable scorer with some excellent weeks
+- **Libby**: Steady performer with reliable accuracy
+
+All players currently have 35 points with comprehensive prediction data for gameweeks 1-3. Player data is embedded directly in the application JavaScript code (`../app/script.js`) rather than stored in separate JSON files for improved performance and simplicity.
+
+### Data Sources
+- **Primary**: Flashscore WSL2 fixtures and results
+- **Automation**: Python scraper in `../scripts/scrape_wsl2_data.py`
+- **Updates**: Automated via `../scripts/update_wsl2_data.bat`
 
 ## Data Formats
 

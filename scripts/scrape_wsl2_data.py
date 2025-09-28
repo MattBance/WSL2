@@ -14,7 +14,7 @@ import time
 # Configuration
 FIXTURES_URL = "https://www.flashscore.in/football/england/wsl-2/fixtures/"
 RESULTS_URL = "https://www.flashscore.in/football/england/wsl-2/results/"
-JSON_FILE_PATH = "./data/fixtures-results.json"
+JSON_FILE_PATH = "../data/fixtures-results.json"
 
 # Headers to mimic a browser request
 HEADERS = {
