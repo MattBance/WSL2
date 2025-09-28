@@ -219,7 +219,7 @@ function loadPredictionsScreen() {
         html += `
             <div class="match-card ${isLocked ? 'locked' : ''}">
                 <div class="match-info">
-                    <div class="teams">${match.homeTeam} vs ${match.awayTeam}</div>
+                    <div class="teams">${sanitizeHtml(match.homeTeam)} vs ${sanitizeHtml(match.awayTeam)}</div>
                     <div class="match-time">
                         ${formatMatchTime(match.kickoffTime)}
                         ${isLocked ? '<span class="deadline-warning">LOCKED</span>' : getTimeToDeadline(match.kickoffTime)}
@@ -266,10 +266,10 @@ function loadLeagueScreen() {
     // Show league info
     infoContainer.innerHTML = `
         <div class="league-code-display">
-            <div class="league-code">${leagueData.leagueCode}</div>
+            <div class="league-code">${sanitizeHtml(leagueData.leagueCode)}</div>
             <div>Kerry & Libby's Private League</div>
         </div>
-        <p><strong>${leagueData.leagueName}</strong></p>
+        <p><strong>${sanitizeHtml(leagueData.leagueName)}</strong></p>
         <p>${leagueData.participants.length} participants</p>
     `;
     
@@ -288,7 +288,7 @@ function loadLeagueScreen() {
         tableHTML += `
             <tr class="${isCurrentUser ? 'user-row' : ''}">
                 <td class="position">${index + 1}</td>
-                <td>${participant.username}${isCurrentUser ? ' (You)' : ''}</td>
+                <td>${sanitizeHtml(participant.username)}${isCurrentUser ? ' (You)' : ''}</td>
                 <td><strong>${participant.totalScore}</strong></td>
                 <td>${lastGWScore}</td>
                 <td>${badge}</td>
@@ -304,10 +304,10 @@ function loadLeagueScreen() {
     achievements.forEach(achievement => {
         achievementsHTML += `
             <div class="achievement-card">
-                <div class="achievement-icon">${achievement.icon}</div>
+                <div class="achievement-icon">${sanitizeHtml(achievement.icon)}</div>
                 <div class="achievement-text">
-                    <div class="title">${achievement.title}</div>
-                    <div class="description">${achievement.description}</div>
+                    <div class="title">${sanitizeHtml(achievement.title)}</div>
+                    <div class="description">${sanitizeHtml(achievement.description)}</div>
                 </div>
             </div>
         `;
@@ -415,7 +415,7 @@ function loadFixturesScreen() {
                     html += `
                         <div class="match-card upcoming">
                             <div class="match-info">
-                                <div class="teams">${match.homeTeam} vs ${match.awayTeam}</div>
+                                <div class="teams">${sanitizeHtml(match.homeTeam)} vs ${sanitizeHtml(match.awayTeam)}</div>
                                 <div class="match-time">${formatMatchTime(match.kickoffTime)}</div>
                             </div>
                             <div class="prediction-inputs">
@@ -475,6 +475,14 @@ function savePredictions() {
 
 // League Functions - Single league support only
 // Users are automatically part of Kerry & Libby's League
+
+// Security Functions
+function sanitizeHtml(str) {
+    if (typeof str !== 'string') return str;
+    const temp = document.createElement('div');
+    temp.textContent = str;
+    return temp.innerHTML;
+}
 
 // Utility Functions
 function getCurrentGameweek() {
