@@ -1,0 +1,96 @@
+{
+  "leagueCode": "GOAL24",
+  "leagueName": "Kerry & Libby's League",
+  "createdDate": "2025-09-01T10:00:00Z",
+  "lastUpdated": "2025-09-28T16:30:00Z",
+  "participants": [
+    {
+      "username": "Kerry",
+      "totalScore": 32,
+      "gameweekScores": {
+        "1": 12,
+        "2": 8,
+        "3": 12
+      },
+      "predictions": {
+        "1": [
+          {
+            "matchId": "gw1_match1",
+            "homeScore": 3,
+            "awayScore": 1,
+            "points": 5,
+            "timestamp": "2025-09-07T12:25:00Z"
+          },
+          {
+            "matchId": "gw1_match2",
+            "homeScore": 1,
+            "awayScore": 0,
+            "points": 10,
+            "timestamp": "2025-09-07T12:45:00Z"
+          }
+        ],
+        "2": [
+          {
+            "matchId": "gw2_match1",
+            "homeScore": 1,
+            "awayScore": 0,
+            "points": 5,
+            "timestamp": "2025-09-14T13:20:00Z"
+          },
+          {
+            "matchId": "gw2_match2",
+            "homeScore": 2,
+            "awayScore": 2,
+            "points": 3,
+            "timestamp": "2025-09-14T12:30:00Z"
+          }
+        ]
+      },
+      "lastUpdated": "2025-09-28T16:30:00Z"
+    },
+    {
+      "username": "Libby",
+      "totalScore": 38,
+      "gameweekScores": {
+        "1": 16,
+        "2": 12,
+        "3": 10
+      },
+      "predictions": {
+        "1": [
+          {
+            "matchId": "gw1_match1",
+            "homeScore": 5,
+            "awayScore": 1,
+            "points": 10,
+            "timestamp": "2025-09-07T11:45:00Z"
+          },
+          {
+            "matchId": "gw1_match2",
+            "homeScore": 1,
+            "awayScore": 0,
+            "points": 10,
+            "timestamp": "2025-09-07T11:55:00Z"
+          }
+        ],
+        "2": [
+          {
+            "matchId": "gw2_match1",
+            "homeScore": 2,
+            "awayScore": 0,
+            "points": 10,
+            "timestamp": "2025-09-14T12:45:00Z"
+          },
+          {
+            "matchId": "gw2_match2",
+            "homeScore": 4,
+            "awayScore": 4,
+            "points": 10,
+            "timestamp": "2025-09-14T12:15:00Z"
+          }
+        ]
+      },
+      "lastUpdated": "2025-09-28T14:20:00Z"
+    }
+  ]
+}

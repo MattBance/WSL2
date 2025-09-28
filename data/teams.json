@@ -1,0 +1,127 @@
+{
+  "season": "2025-26",
+  "league": "WSL2",
+  "lastUpdated": "2025-09-28T10:00:00Z",
+  "teams": [
+    {
+      "id": "birmingham_w",
+      "name": "Birmingham W",
+      "shortName": "BIR",
+      "badge": "assets/badges/birmingham.png",
+      "colors": {
+        "primary": "#0066CC",
+        "secondary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "bristol_city_w",
+      "name": "Bristol City W",
+      "shortName": "BRC",
+      "badge": "assets/badges/bristol-city.png",
+      "colors": {
+        "primary": "#FF0000",
+        "secondary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "charlton_w",
+      "name": "Charlton W",
+      "shortName": "CHA",
+      "badge": "assets/badges/charlton.png",
+      "colors": {
+        "primary": "#CC0000",
+        "secondary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "crystal_palace_w",
+      "name": "Crystal Palace W",
+      "shortName": "CRY",
+      "badge": "assets/badges/crystal-palace.png",
+      "colors": {
+        "primary": "#1B458F",
+        "secondary": "#A7A5A6"
+      }
+    },
+    {
+      "id": "durham_w",
+      "name": "Durham W",
+      "shortName": "DUR",
+      "badge": "assets/badges/durham.png",
+      "colors": {
+        "primary": "#800080",
+        "secondary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "ipswich_w",
+      "name": "Ipswich W",
+      "shortName": "IPS",
+      "badge": "assets/badges/ipswich.png",
+      "colors": {
+        "primary": "#0066CC",
+        "secondary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "newcastle_utd_w",
+      "name": "Newcastle Utd W",
+      "shortName": "NEW",
+      "badge": "assets/badges/newcastle.png",
+      "colors": {
+        "primary": "#000000",
+        "secondary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "nottingham_w",
+      "name": "Nottingham W",
+      "shortName": "NOT",
+      "badge": "assets/badges/nottingham.png",
+      "colors": {
+        "primary": "#FF0000",
+        "secondary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "portsmouth_w",
+      "name": "Portsmouth W",
+      "shortName": "POR",
+      "badge": "assets/badges/portsmouth.png",
+      "colors": {
+        "primary": "#003399",
+        "secondary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "sheffield_utd_w",
+      "name": "Sheffield Utd W",
+      "shortName": "SHU",
+      "badge": "assets/badges/sheffield-utd.png",
+      "colors": {
+        "primary": "#FF1744",
+        "secondary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "southampton_w",
+      "name": "Southampton W",
+      "shortName": "SOU",
+      "badge": "assets/badges/southampton.png",
+      "colors": {
+        "primary": "#D71920",
+        "secondary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "sunderland_w",
+      "name": "Sunderland W",
+      "shortName": "SUN",
+      "badge": "assets/badges/sunderland.png",
+      "colors": {
+        "primary": "#FF0000",
+        "secondary": "#FFFFFF"
+      }
+    }
+  ]
+}

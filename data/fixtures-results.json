@@ -1,0 +1,386 @@
+{
+  "season": "2025-26",
+  "lastUpdated": "2025-09-28T10:00:00Z",
+  "gameweeks": [
+    {
+      "gameweek": 1,
+      "weekStart": "2025-09-05",
+      "weekEnd": "2025-09-07",
+      "matches": [
+        {
+          "id": "gw1_match1",
+          "homeTeam": "Birmingham W",
+          "awayTeam": "Bristol City W",
+          "kickoffTime": "2025-09-07T13:00:00Z",
+          "homeScore": 5,
+          "awayScore": 1,
+          "status": "finished"
+        },
+        {
+          "id": "gw1_match2",
+          "homeTeam": "Charlton W",
+          "awayTeam": "Crystal Palace W",
+          "kickoffTime": "2025-09-07T13:00:00Z",
+          "homeScore": 1,
+          "awayScore": 0,
+          "status": "finished"
+        },
+        {
+          "id": "gw1_match3",
+          "homeTeam": "Nottingham W",
+          "awayTeam": "Newcastle Utd W",
+          "kickoffTime": "2025-09-07T13:00:00Z",
+          "homeScore": 1,
+          "awayScore": 2,
+          "status": "finished"
+        },
+        {
+          "id": "gw1_match4",
+          "homeTeam": "Portsmouth W",
+          "awayTeam": "Durham W",
+          "kickoffTime": "2025-09-07T13:00:00Z",
+          "homeScore": 0,
+          "awayScore": 2,
+          "status": "finished"
+        },
+        {
+          "id": "gw1_match5",
+          "homeTeam": "Southampton W",
+          "awayTeam": "Ipswich W",
+          "kickoffTime": "2025-09-06T13:00:00Z",
+          "homeScore": 4,
+          "awayScore": 0,
+          "status": "finished"
+        },
+        {
+          "id": "gw1_match6",
+          "homeTeam": "Sheffield Utd W",
+          "awayTeam": "Sunderland W",
+          "kickoffTime": "2025-09-05T17:00:00Z",
+          "homeScore": 0,
+          "awayScore": 4,
+          "status": "finished"
+        }
+      ]
+    },
+    {
+      "gameweek": 2,
+      "weekStart": "2025-09-12",
+      "weekEnd": "2025-09-14",
+      "matches": [
+        {
+          "id": "gw2_match1",
+          "homeTeam": "Bristol City W",
+          "awayTeam": "Portsmouth W",
+          "kickoffTime": "2025-09-14T14:00:00Z",
+          "homeScore": 2,
+          "awayScore": 0,
+          "status": "finished"
+        },
+        {
+          "id": "gw2_match2",
+          "homeTeam": "Crystal Palace W",
+          "awayTeam": "Southampton W",
+          "kickoffTime": "2025-09-14T13:00:00Z",
+          "homeScore": 4,
+          "awayScore": 4,
+          "status": "finished"
+        },
+        {
+          "id": "gw2_match3",
+          "homeTeam": "Ipswich W",
+          "awayTeam": "Nottingham W",
+          "kickoffTime": "2025-09-14T13:00:00Z",
+          "homeScore": 0,
+          "awayScore": 1,
+          "status": "finished"
+        },
+        {
+          "id": "gw2_match4",
+          "homeTeam": "Newcastle Utd W",
+          "awayTeam": "Sheffield Utd W",
+          "kickoffTime": "2025-09-14T13:00:00Z",
+          "homeScore": 1,
+          "awayScore": 1,
+          "status": "finished"
+        },
+        {
+          "id": "gw2_match5",
+          "homeTeam": "Sunderland W",
+          "awayTeam": "Birmingham W",
+          "kickoffTime": "2025-09-14T13:00:00Z",
+          "homeScore": 1,
+          "awayScore": 1,
+          "status": "finished"
+        },
+        {
+          "id": "gw2_match6",
+          "homeTeam": "Durham W",
+          "awayTeam": "Charlton W",
+          "kickoffTime": "2025-09-14T11:00:00Z",
+          "homeScore": 1,
+          "awayScore": 2,
+          "status": "finished"
+        }
+      ]
+    },
+    {
+      "gameweek": 3,
+      "weekStart": "2025-09-19",
+      "weekEnd": "2025-09-21",
+      "matches": [
+        {
+          "id": "gw3_match1",
+          "homeTeam": "Birmingham W",
+          "awayTeam": "Newcastle Utd W",
+          "kickoffTime": "2025-09-21T13:00:00Z",
+          "homeScore": 4,
+          "awayScore": 2,
+          "status": "finished"
+        },
+        {
+          "id": "gw3_match2",
+          "homeTeam": "Charlton W",
+          "awayTeam": "Ipswich W",
+          "kickoffTime": "2025-09-21T13:00:00Z",
+          "homeScore": 0,
+          "awayScore": 0,
+          "status": "finished"
+        },
+        {
+          "id": "gw3_match3",
+          "homeTeam": "Nottingham W",
+          "awayTeam": "Crystal Palace W",
+          "kickoffTime": "2025-09-21T13:00:00Z",
+          "homeScore": 1,
+          "awayScore": 2,
+          "status": "finished"
+        },
+        {
+          "id": "gw3_match4",
+          "homeTeam": "Portsmouth W",
+          "awayTeam": "Sheffield Utd W",
+          "kickoffTime": "2025-09-21T13:00:00Z",
+          "homeScore": 1,
+          "awayScore": 0,
+          "status": "finished"
+        },
+        {
+          "id": "gw3_match5",
+          "homeTeam": "Southampton W",
+          "awayTeam": "Bristol City W",
+          "kickoffTime": "2025-09-21T13:00:00Z",
+          "homeScore": 0,
+          "awayScore": 1,
+          "status": "finished"
+        },
+        {
+          "id": "gw3_match6",
+          "homeTeam": "Sunderland W",
+          "awayTeam": "Durham W",
+          "kickoffTime": "2025-09-19T18:00:00Z",
+          "homeScore": 2,
+          "awayScore": 1,
+          "status": "finished"
+        }
+      ]
+    },
+    {
+      "gameweek": 4,
+      "weekStart": "2025-09-27",
+      "weekEnd": "2025-09-28",
+      "matches": [
+        {
+          "id": "gw4_match1",
+          "homeTeam": "Durham W",
+          "awayTeam": "Crystal Palace W",
+          "kickoffTime": "2025-09-28T11:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "id": "gw4_match2",
+          "homeTeam": "Southampton W",
+          "awayTeam": "Sunderland W",
+          "kickoffTime": "2025-09-28T11:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "id": "gw4_match3",
+          "homeTeam": "Ipswich W",
+          "awayTeam": "Portsmouth W",
+          "kickoffTime": "2025-09-28T13:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "id": "gw4_match4",
+          "homeTeam": "Newcastle Utd W",
+          "awayTeam": "Charlton W",
+          "kickoffTime": "2025-09-28T13:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "id": "gw4_match5",
+          "homeTeam": "Bristol City W",
+          "awayTeam": "Nottingham W",
+          "kickoffTime": "2025-09-27T17:00:00Z",
+          "homeScore": 1,
+          "awayScore": 2,
+          "status": "finished"
+        },
+        {
+          "id": "gw4_match6",
+          "homeTeam": "Sheffield Utd W",
+          "awayTeam": "Birmingham W",
+          "kickoffTime": "2025-09-27T17:00:00Z",
+          "homeScore": 1,
+          "awayScore": 2,
+          "status": "finished"
+        }
+      ]
+    },
+    {
+      "gameweek": 5,
+      "weekStart": "2025-10-05",
+      "weekEnd": "2025-10-05",
+      "matches": [
+        {
+          "id": "gw5_match1",
+          "homeTeam": "Sheffield Utd W",
+          "awayTeam": "Ipswich W",
+          "kickoffTime": "2025-10-05T12:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "id": "gw5_match2",
+          "homeTeam": "Birmingham W",
+          "awayTeam": "Southampton W",
+          "kickoffTime": "2025-10-05T13:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "id": "gw5_match3",
+          "homeTeam": "Bristol City W",
+          "awayTeam": "Durham W",
+          "kickoffTime": "2025-10-05T13:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "id": "gw5_match4",
+          "homeTeam": "Crystal Palace W",
+          "awayTeam": "Newcastle Utd W",
+          "kickoffTime": "2025-10-05T13:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "id": "gw5_match5",
+          "homeTeam": "Nottingham W",
+          "awayTeam": "Portsmouth W",
+          "kickoffTime": "2025-10-05T13:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "id": "gw5_match6",
+          "homeTeam": "Sunderland W",
+          "awayTeam": "Charlton W",
+          "kickoffTime": "2025-10-05T13:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        }
+      ]
+    },
+    {
+      "gameweek": 6,
+      "weekStart": "2025-10-12",
+      "weekEnd": "2025-10-12",
+      "matches": [
+        {
+          "id": "gw6_match1",
+          "homeTeam": "Crystal Palace W",
+          "awayTeam": "Sunderland W",
+          "kickoffTime": "2025-10-12T11:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "id": "gw6_match2",
+          "homeTeam": "Durham W",
+          "awayTeam": "Nottingham W",
+          "kickoffTime": "2025-10-12T11:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "id": "gw6_match3",
+          "homeTeam": "Charlton W",
+          "awayTeam": "Sheffield Utd W",
+          "kickoffTime": "2025-10-12T13:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "id": "gw6_match4",
+          "homeTeam": "Ipswich W",
+          "awayTeam": "Birmingham W",
+          "kickoffTime": "2025-10-12T13:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "id": "gw6_match5",
+          "homeTeam": "Newcastle Utd W",
+          "awayTeam": "Bristol City W",
+          "kickoffTime": "2025-10-12T13:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        },
+        {
+          "id": "gw6_match6",
+          "homeTeam": "Portsmouth W",
+          "awayTeam": "Southampton W",
+          "kickoffTime": "2025-10-12T13:00:00Z",
+          "homeScore": null,
+          "awayScore": null,
+          "status": "upcoming"
+        }
+      ]
+    }
+  ],
+  "teams": [
+    "Birmingham W",
+    "Bristol City W",
+    "Charlton W",
+    "Crystal Palace W",
+    "Durham W",
+    "Ipswich W",
+    "Newcastle Utd W",
+    "Nottingham W",
+    "Portsmouth W",
+    "Sheffield Utd W",
+    "Southampton W",
+    "Sunderland W"
+  ]
+}
