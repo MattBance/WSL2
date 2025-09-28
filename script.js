@@ -255,7 +255,7 @@ function loadLeagueScreen() {
         infoContainer.innerHTML = `
             <div class="loading">
                 <div class="spinner"></div>
-                <p>Loading Kerry & Libby's League...</p>
+                <p>Loading WSL2 Score Predictor League...</p>
             </div>
         `;
         tableContainer.innerHTML = '';
@@ -267,7 +267,7 @@ function loadLeagueScreen() {
     infoContainer.innerHTML = `
         <div class="league-code-display">
             <div class="league-code">${sanitizeHtml(leagueData.leagueCode)}</div>
-            <div>Kerry & Libby's Private League</div>
+            <div>WSL2 Score Predictor League</div>
         </div>
         <p><strong>${sanitizeHtml(leagueData.leagueName)}</strong></p>
         <p>${leagueData.participants.length} participants</p>
