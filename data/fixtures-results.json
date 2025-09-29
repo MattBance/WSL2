@@ -1,6 +1,6 @@
 {
   "season": "2025-26",
-  "lastUpdated": "2025-09-28T10:00:00Z",
+  "lastUpdated": "2025-09-29T10:00:00Z",
   "gameweeks": [
     {
       "gameweek": 1,
@@ -195,36 +195,36 @@
           "homeTeam": "Durham W",
           "awayTeam": "Crystal Palace W",
           "kickoffTime": "2025-09-28T11:00:00Z",
-          "homeScore": null,
-          "awayScore": null,
-          "status": "upcoming"
+          "homeScore": 1,
+          "awayScore": 1,
+          "status": "finished"
         },
         {
           "id": "gw4_match2",
           "homeTeam": "Southampton W",
           "awayTeam": "Sunderland W",
           "kickoffTime": "2025-09-28T11:00:00Z",
-          "homeScore": null,
-          "awayScore": null,
-          "status": "upcoming"
+          "homeScore": 1,
+          "awayScore": 1,
+          "status": "finished"
         },
         {
           "id": "gw4_match3",
           "homeTeam": "Ipswich W",
           "awayTeam": "Portsmouth W",
           "kickoffTime": "2025-09-28T13:00:00Z",
-          "homeScore": null,
-          "awayScore": null,
-          "status": "upcoming"
+          "homeScore": 3,
+          "awayScore": 2,
+          "status": "finished"
         },
         {
           "id": "gw4_match4",
           "homeTeam": "Newcastle Utd W",
           "awayTeam": "Charlton W",
           "kickoffTime": "2025-09-28T13:00:00Z",
-          "homeScore": null,
-          "awayScore": null,
-          "status": "upcoming"
+          "homeScore": 0,
+          "awayScore": 1,
+          "status": "finished"
         },
         {
           "id": "gw4_match5",
